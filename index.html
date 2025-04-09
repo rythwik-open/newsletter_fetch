@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Newsletter Signup</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 min-h-screen flex items-center justify-center">
+  <div class="bg-white p-8 rounded-xl shadow-md w-full max-w-md">
+    <h2 class="text-2xl font-semibold mb-4">Subscribe to our Newsletter</h2>
+    <form id="newsletterForm" class="space-y-4">
+      <input
+        type="email"
+        id="email"
+        name="email"
+        required
+        placeholder="Enter your email"
+        class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+      />
+      <button
+        type="submit"
+        class="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 rounded-lg transition duration-200"
+      >
+        Subscribe
+      </button>
+    </form>
+    <p id="successMessage" class="text-green-600 mt-4 hidden">
+      ✅ You’ve been subscribed!
+    </p>
+    <p id="errorMessage" class="text-red-600 mt-4 hidden">
+      ❌ Something went wrong. Please try again.
+    </p>
+  </div>
+
+  <script>
+    document.getElementById("newsletterForm").addEventListener("submit", async function (e) {
+      e.preventDefault();
+      const email = document.getElementById("email").value;
+
+      // Replace this with your actual HubSpot API POST logic
+      try {
+        const response = await fetch("https://api.hubapi.com/crm/v3/objects/contacts", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization": "Bearer YOUR_ACCESS_TOKEN"
+          },
+          body: JSON.stringify({
+            properties: {
+              email: email
+            }
+          })
+        });
+
+        if (response.ok) {
+          document.getElementById("successMessage").classList.remove("hidden");
+          document.getElementById("errorMessage").classList.add("hidden");
+          document.getElementById("newsletterForm").reset();
+        } else {
+          throw new Error("API error");
+        }
+      } catch (error) {
+        document.getElementById("successMessage").classList.add("hidden");
+        document.getElementById("errorMessage").classList.remove("hidden");
+      }
+    });
+  </script>
+</body>
+</html>
