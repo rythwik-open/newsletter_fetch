@@ -32,7 +32,7 @@
           e.preventDefault();
           const email = document.getElementById("email").value;
       
-          const res = await fetch("https://YOUR_API_GATEWAY_URL_HERE", {
+          const res = await fetch("https://n922jfesla.execute-api.ap-south-1.amazonaws.com/staging", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ email })
