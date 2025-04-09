@@ -53,9 +53,11 @@ def lambda_handler(event, context):
         return {
             "statusCode": 200,
             "headers": {
-                "Access-Control-Allow-Origin": "*"
+                "Access-Control-Allow-Origin": "*",  # Replace '*' with your frontend's origin if needed
+                "Access-Control-Allow-Methods": "POST, OPTIONS",
+                "Access-Control-Allow-Headers": "Content-Type"
             },
-            "body": json.dumps({"message": "Contact added successfully."})
+            "body": json.dumps({"message": "Success"})
         }
 
     except Exception as e:
