@@ -31,17 +31,24 @@
         document.getElementById("newsletter-form").addEventListener("submit", async (e) => {
           e.preventDefault();
           const email = document.getElementById("email").value;
-      
-          const res = await fetch("https://n922jfesla.execute-api.ap-south-1.amazonaws.com/staging", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ email })
-          });
-      
-          if (res.ok) {
-            document.getElementById("success-message").classList.remove("hidden");
-          } else {
-            alert("Something went wrong. Try again later.");
+
+          try {
+              const res = await fetch("https://n922jfesla.execute-api.ap-south-1.amazonaws.com/staging", {
+                  method: "POST",
+                  headers: { "Content-Type": "application/json" },
+                  body: JSON.stringify({ email })
+              });
+
+              const data = await res.json();
+
+              if (res.ok) {
+                  document.getElementById("success-message").classList.remove("hidden");
+              } else {
+                  alert(data.message || "Something went wrong. Try again later.");
+              }
+          } catch (error) {
+              alert("An error occurred. Please try again later.");
+              console.error(error);
           }
         });
       </script>
