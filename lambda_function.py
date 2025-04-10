@@ -33,12 +33,10 @@ def lambda_handler(event, context):
         if contact_res.status_code not in [200, 201]:
             return {
                 "statusCode": 500,
-                "headers": {
-                    "Access-Control-Allow-Origin": "https://rythwik-open.github.io",  # Replace '*' with your frontend's origin if needed
-                    "Access-Control-Allow-Methods": "POST, OPTIONS",
-                    "Access-Control-Allow-Headers": "Content-Type"
-                },
-                "body": json.dumps({"message": "Failed to create contact.", "details": contact_res.json()})
+                "body": json.dumps({
+                    "message": "Failed to create contact.",
+                    "details": contact_res.json()
+                })
             }
 
         # Step 2: Add to static list
@@ -52,31 +50,22 @@ def lambda_handler(event, context):
         if list_res.status_code != 200:
             return {
                 "statusCode": 500,
-                "headers": {
-                    "Access-Control-Allow-Origin": "https://rythwik-open.github.io",  # Replace '*' with your frontend's origin if needed
-                    "Access-Control-Allow-Methods": "POST, OPTIONS",
-                    "Access-Control-Allow-Headers": "Content-Type"
-                },
-                "body": json.dumps({"message": "Failed to add to list.", "details": list_res.json()})
+                "body": json.dumps({
+                    "message": "Failed to add to list.",
+                    "details": list_res.json()
+                })
             }
 
         return {
             "statusCode": 200,
-            "headers": {
-                "Access-Control-Allow-Origin": "https://rythwik-open.github.io",  # Replace '*' with your frontend's origin if needed
-                "Access-Control-Allow-Methods": "POST, OPTIONS",
-                "Access-Control-Allow-Headers": "Content-Type"
-            },
             "body": json.dumps({"message": "Success"})
         }
 
     except Exception as e:
         return {
             "statusCode": 500,
-            "headers": {
-                "Access-Control-Allow-Origin": "https://rythwik-open.github.io",  # Replace '*' with your frontend's origin if needed
-                "Access-Control-Allow-Methods": "POST, OPTIONS",
-                "Access-Control-Allow-Headers": "Content-Type"
-            },
-            "body": json.dumps({"message": "Server error.", "error": str(e)})
+            "body": json.dumps({
+                "message": "Server error.",
+                "error": str(e)
+            })
         }
