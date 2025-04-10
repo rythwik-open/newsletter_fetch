@@ -11,12 +11,28 @@ HEADERS = {
 
 def lambda_handler(event, context):
     try:
+        if event['httpMethod'] == 'OPTIONS':
+            return {
+                "statusCode": 200,
+                "headers": {
+                    "Access-Control-Allow-Origin": "*",
+                    "Access-Control-Allow-Headers": "Content-Type",
+                    "Access-Control-Allow-Methods": "POST, OPTIONS"
+                },
+                "body": ""
+            }
+
         body = json.loads(event['body'])
         email = body.get('email')
 
         if not email:
             return {
                 "statusCode": 400,
+                "headers": {
+                    "Access-Control-Allow-Origin": "*",  # Allow all origins
+                    "Access-Control-Allow-Headers": "Content-Type",
+                    "Access-Control-Allow-Methods": "POST, OPTIONS"
+                },
                 "body": json.dumps({"message": "Email is required."})
             }
 
@@ -33,6 +49,11 @@ def lambda_handler(event, context):
         if contact_res.status_code not in [200, 201]:
             return {
                 "statusCode": 500,
+                "headers": {
+                    "Access-Control-Allow-Origin": "*",
+                    "Access-Control-Allow-Headers": "Content-Type",
+                    "Access-Control-Allow-Methods": "POST, OPTIONS"
+                },
                 "body": json.dumps({
                     "message": "Failed to create contact.",
                     "details": contact_res.json()
@@ -50,6 +71,11 @@ def lambda_handler(event, context):
         if list_res.status_code != 200:
             return {
                 "statusCode": 500,
+                "headers": {
+                    "Access-Control-Allow-Origin": "*",
+                    "Access-Control-Allow-Headers": "Content-Type",
+                    "Access-Control-Allow-Methods": "POST, OPTIONS"
+                },
                 "body": json.dumps({
                     "message": "Failed to add to list.",
                     "details": list_res.json()
@@ -58,12 +84,22 @@ def lambda_handler(event, context):
 
         return {
             "statusCode": 200,
+            "headers": {
+                "Access-Control-Allow-Origin": "*",
+                "Access-Control-Allow-Headers": "Content-Type",
+                "Access-Control-Allow-Methods": "POST, OPTIONS"
+            },
             "body": json.dumps({"message": "Success"})
         }
 
     except Exception as e:
         return {
             "statusCode": 500,
+            "headers": {
+                "Access-Control-Allow-Origin": "*",
+                "Access-Control-Allow-Headers": "Content-Type",
+                "Access-Control-Allow-Methods": "POST, OPTIONS"
+            },
             "body": json.dumps({
                 "message": "Server error.",
                 "error": str(e)
