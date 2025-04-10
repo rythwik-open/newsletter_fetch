@@ -33,6 +33,11 @@ def lambda_handler(event, context):
         if contact_res.status_code not in [200, 201]:
             return {
                 "statusCode": 500,
+                "headers": {
+                    "Access-Control-Allow-Origin": "*",  # Replace '*' with your frontend's origin if needed
+                    "Access-Control-Allow-Methods": "POST, OPTIONS",
+                    "Access-Control-Allow-Headers": "Content-Type"
+                },
                 "body": json.dumps({"message": "Failed to create contact.", "details": contact_res.json()})
             }
 
@@ -47,6 +52,11 @@ def lambda_handler(event, context):
         if list_res.status_code != 200:
             return {
                 "statusCode": 500,
+                "headers": {
+                    "Access-Control-Allow-Origin": "*",  # Replace '*' with your frontend's origin if needed
+                    "Access-Control-Allow-Methods": "POST, OPTIONS",
+                    "Access-Control-Allow-Headers": "Content-Type"
+                },
                 "body": json.dumps({"message": "Failed to add to list.", "details": list_res.json()})
             }
 
@@ -63,5 +73,10 @@ def lambda_handler(event, context):
     except Exception as e:
         return {
             "statusCode": 500,
+            "headers": {
+                "Access-Control-Allow-Origin": "*",  # Replace '*' with your frontend's origin if needed
+                "Access-Control-Allow-Methods": "POST, OPTIONS",
+                "Access-Control-Allow-Headers": "Content-Type"
+            },
             "body": json.dumps({"message": "Server error.", "error": str(e)})
         }
