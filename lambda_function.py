@@ -34,7 +34,7 @@ def lambda_handler(event, context):
             return {
                 "statusCode": 500,
                 "headers": {
-                    "Access-Control-Allow-Origin": "*",  # Replace '*' with your frontend's origin if needed
+                    "Access-Control-Allow-Origin": "https://rythwik-open.github.io",  # Replace '*' with your frontend's origin if needed
                     "Access-Control-Allow-Methods": "POST, OPTIONS",
                     "Access-Control-Allow-Headers": "Content-Type"
                 },
