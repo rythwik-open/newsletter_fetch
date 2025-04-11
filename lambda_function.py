@@ -15,9 +15,9 @@ def lambda_handler(event, context):
             return {
                 "statusCode": 200,
                 "headers": {
-                    "Access-Control-Allow-Origin": "*",
+                    "Access-Control-Allow-Origin": "https://https://rythwik-open.github.io",
                     "Access-Control-Allow-Headers": "Content-Type",
-                    "Access-Control-Allow-Methods": "POST, OPTIONS"
+                    "Access-Control-Allow-Methods": "POST"
                 },
                 "body": ""
             }
@@ -29,9 +29,9 @@ def lambda_handler(event, context):
             return {
                 "statusCode": 400,
                 "headers": {
-                    "Access-Control-Allow-Origin": "*",  # Allow all origins
+                    "Access-Control-Allow-Origin": "https://https://rythwik-open.github.io",  # Allow all origins
                     "Access-Control-Allow-Headers": "Content-Type",
-                    "Access-Control-Allow-Methods": "POST, OPTIONS"
+                    "Access-Control-Allow-Methods": "POST"
                 },
                 "body": json.dumps({"message": "Email is required."})
             }
@@ -50,9 +50,9 @@ def lambda_handler(event, context):
             return {
                 "statusCode": 500,
                 "headers": {
-                    "Access-Control-Allow-Origin": "*",
+                    "Access-Control-Allow-Origin": "https://https://rythwik-open.github.io",
                     "Access-Control-Allow-Headers": "Content-Type",
-                    "Access-Control-Allow-Methods": "POST, OPTIONS"
+                    "Access-Control-Allow-Methods": "POST"
                 },
                 "body": json.dumps({
                     "message": "Failed to create contact.",
@@ -72,9 +72,9 @@ def lambda_handler(event, context):
             return {
                 "statusCode": 500,
                 "headers": {
-                    "Access-Control-Allow-Origin": "*",
+                    "Access-Control-Allow-Origin": "https://https://rythwik-open.github.io",
                     "Access-Control-Allow-Headers": "Content-Type",
-                    "Access-Control-Allow-Methods": "POST, OPTIONS"
+                    "Access-Control-Allow-Methods": "POST"
                 },
                 "body": json.dumps({
                     "message": "Failed to add to list.",
@@ -85,9 +85,9 @@ def lambda_handler(event, context):
         return {
             "statusCode": 200,
             "headers": {
-                "Access-Control-Allow-Origin": "*",
+                "Access-Control-Allow-Origin": "https://https://rythwik-open.github.io",
                 "Access-Control-Allow-Headers": "Content-Type",
-                "Access-Control-Allow-Methods": "POST, OPTIONS"
+                "Access-Control-Allow-Methods": "POST"
             },
             "body": json.dumps({"message": "Success"})
         }
@@ -96,9 +96,9 @@ def lambda_handler(event, context):
         return {
             "statusCode": 500,
             "headers": {
-                "Access-Control-Allow-Origin": "*",
+                "Access-Control-Allow-Origin": "https://https://rythwik-open.github.io",
                 "Access-Control-Allow-Headers": "Content-Type",
-                "Access-Control-Allow-Methods": "POST, OPTIONS"
+                "Access-Control-Allow-Methods": "POST"
             },
             "body": json.dumps({
                 "message": "Server error.",
