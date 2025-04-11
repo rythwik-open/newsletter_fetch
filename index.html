@@ -1,57 +1,228 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Newsletter Signup</title>
-  <script src="https://cdn.tailwindcss.com"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Newsletter Block</title>
+    <style>
+        .newsletter-block {
+            width: 100%; /* Full width to match content */
+            max-width: none; /* Remove max-width constraint */
+            background: #FFF7ED;
+            border-left: 4px solid #F97316;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0; /* Removed corner radius */
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            text-align: left;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        .newsletter-content {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            align-items: flex-start;
+        }
+
+        .newsletter-icon {
+            color: #F97316;
+            background-color: rgba(249, 115, 22, 0.1);
+            padding: 0.5rem;
+            border-radius: 0; /* Removed corner radius */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .newsletter-text h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin: 0 0 0.5rem 0;
+            color: #1F2937;
+        }
+
+        .newsletter-text p {
+            font-size: 0.875rem;
+            margin: 0;
+            color: #4B5563;
+            line-height: 1.4;
+        }
+
+        .newsletter-form {
+            margin-top: 1rem;
+        }
+
+        .input-group {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .newsletter-input {
+            flex: 1;
+            min-width: 200px;
+            padding: 0.5rem 0.75rem;
+            border: 1px solid #E5E7EB;
+            border-radius: 0; /* Removed corner radius */
+            font-size: 0.875rem;
+        }
+
+        .newsletter-input:focus {
+            border-color: #F97316;
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(249, 115, 22, 0.2);
+        }
+
+        .newsletter-button {
+            background-color: #F97316;
+            color: white;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 0; /* Removed corner radius */
+            cursor: pointer;
+            font-size: 0.875rem;
+        }
+
+        .newsletter-button:hover {
+            background-color: #EA580C;
+        }
+
+        .newsletter-button:focus {
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(249, 115, 22, 0.4);
+        }
+        
+        .newsletter-message {
+            margin-top: 0.5rem;
+            font-size: 0.875rem;
+        }
+        
+        .newsletter-message.success {
+            color: #059669;
+        }
+        
+        .newsletter-message.error {
+            color: #DC2626;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 480px) {
+            .newsletter-block {
+                padding: 1rem;
+            }
+            
+            .input-group {
+                flex-direction: column;
+            }
+            
+            .newsletter-button {
+                width: 100%;
+            }
+        }
+    </style>
 </head>
-<body class="bg-gray-50 min-h-screen flex items-center justify-center">
-    <div class="max-w-md mx-auto mt-10 p-6 bg-white shadow-xl rounded-2xl">
-        <h2 class="text-xl font-bold mb-4">Subscribe to Our Newsletter</h2>
-        <form id="newsletter-form" class="space-y-4">
-          <input
-            type="email"
-            id="email"
-            placeholder="Enter your email"
-            required
-            class="w-full px-4 py-2 border border-gray-300 rounded-xl focus:outline-none focus:ring focus:border-blue-500"
-          />
-          <button
-            type="submit"
-            class="w-full bg-blue-600 text-white py-2 px-4 rounded-xl hover:bg-blue-700 transition"
-          >
-            Subscribe
-          </button>
-          <p id="success-message" class="hidden text-green-600 text-sm mt-2">Thanks for subscribing!</p>
+<body>
+    <div class="newsletter-block">
+        <div class="newsletter-content">
+            <div class="newsletter-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect width="20" height="16" x="2" y="4" rx="2"></rect>
+                    <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+                </svg>
+            </div>
+            <div class="newsletter-text">
+                <h3>Stay in the Loop</h3>
+                <p>Subscribe to our newsletter for the latest updates and exclusive content.</p>
+            </div>
+        </div>
+
+        <form id="newsletter-form" class="newsletter-form">
+            <div class="input-group">
+                <input type="email" id="newsletter-email" placeholder="Your email address" class="newsletter-input" required>
+                <button type="submit" id="newsletter-submit" class="newsletter-button">Subscribe</button>
+            </div>
+            <div id="newsletter-message" class="newsletter-message"></div>
         </form>
-      </div>
-      
-      <script>
-        document.getElementById("newsletter-form").addEventListener("submit", async (e) => {
-          e.preventDefault();
-          const email = document.getElementById("email").value;
+    </div>
 
-          try {
-              const res = await fetch("https://unttqs6138.execute-api.ap-south-1.amazonaws.com/api/subscribe", {
-                  method: "POST",
-                  headers: { "Content-Type": "application/json" },
-                  body: JSON.stringify({ email })
-              });
-
-              const data = await res.json();
-
-              if (res.ok) {
-                  document.getElementById("success-message").classList.remove("hidden");
-              } else {
-                  alert(data.message || "Something went wrong. Try again later.");
-              }
-          } catch (error) {
-              alert("An error occurred. Please try again later.");
-              console.error(error);
-          }
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const form = document.getElementById("newsletter-form");
+            const emailInput = document.getElementById("newsletter-email");
+            const submitButton = document.getElementById("newsletter-submit");
+            const messageDiv = document.getElementById("newsletter-message");
+            
+            // API endpoint (replace with your Lambda function URL)
+            const API_ENDPOINT = "https://your-api-endpoint.com/subscribe";
+            
+            form.addEventListener("submit", function(e) {
+                e.preventDefault();
+                
+                // Reset message
+                messageDiv.textContent = "";
+                messageDiv.className = "newsletter-message";
+                
+                // Get email
+                const email = emailInput.value.trim();
+                
+                // Basic validation
+                if (!isValidEmail(email)) {
+                    showMessage("Please enter a valid email address.", "error");
+                    return;
+                }
+                
+                // Disable form during submission
+                submitButton.disabled = true;
+                submitButton.textContent = "Subscribing...";
+                
+                // Send subscription request
+                fetch(API_ENDPOINT, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({ email: email })
+                })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error("Network response was not ok");
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    // Success
+                    showMessage("You're now subscribed to our newsletter!", "success");
+                    emailInput.value = "";
+                    
+                    // Change button to show success
+                    submitButton.textContent = "✓ Subscribed";
+                    setTimeout(() => {
+                        submitButton.disabled = false;
+                        submitButton.textContent = "Subscribe";
+                    }, 3000);
+                })
+                .catch(error => {
+                    // Error
+                    showMessage("There was an error subscribing. Please try again.", "error");
+                    submitButton.disabled = false;
+                    submitButton.textContent = "Subscribe";
+                    console.error("Subscription error:", error);
+                });
+            });
+            
+            function isValidEmail(email) {
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                return emailRegex.test(email);
+            }
+            
+            function showMessage(text, type) {
+                messageDiv.textContent = text;
+                messageDiv.className = "newsletter-message " + type;
+            }
         });
-      </script>
-      
+    </script>
 </body>
 </html>

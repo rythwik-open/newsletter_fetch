@@ -15,7 +15,7 @@ def lambda_handler(event, context):
             return {
                 "statusCode": 200,
                 "headers": {
-                    "Access-Control-Allow-Origin": "https://https://rythwik-open.github.io",
+                    "Access-Control-Allow-Origin": "https://rythwik-open.github.io",
                     "Access-Control-Allow-Headers": "Content-Type",
                     "Access-Control-Allow-Methods": "POST"
                 },
@@ -29,7 +29,7 @@ def lambda_handler(event, context):
             return {
                 "statusCode": 400,
                 "headers": {
-                    "Access-Control-Allow-Origin": "https://https://rythwik-open.github.io",  # Allow all origins
+                    "Access-Control-Allow-Origin": "https://rythwik-open.github.io",  # Allow all origins
                     "Access-Control-Allow-Headers": "Content-Type",
                     "Access-Control-Allow-Methods": "POST"
                 },
@@ -50,7 +50,7 @@ def lambda_handler(event, context):
             return {
                 "statusCode": 500,
                 "headers": {
-                    "Access-Control-Allow-Origin": "https://https://rythwik-open.github.io",
+                    "Access-Control-Allow-Origin": "https://rythwik-open.github.io",
                     "Access-Control-Allow-Headers": "Content-Type",
                     "Access-Control-Allow-Methods": "POST"
                 },
@@ -72,7 +72,7 @@ def lambda_handler(event, context):
             return {
                 "statusCode": 500,
                 "headers": {
-                    "Access-Control-Allow-Origin": "https://https://rythwik-open.github.io",
+                    "Access-Control-Allow-Origin": "https://rythwik-open.github.io",
                     "Access-Control-Allow-Headers": "Content-Type",
                     "Access-Control-Allow-Methods": "POST"
                 },
@@ -85,7 +85,7 @@ def lambda_handler(event, context):
         return {
             "statusCode": 200,
             "headers": {
-                "Access-Control-Allow-Origin": "https://https://rythwik-open.github.io",
+                "Access-Control-Allow-Origin": "https://rythwik-open.github.io",
                 "Access-Control-Allow-Headers": "Content-Type",
                 "Access-Control-Allow-Methods": "POST"
             },
@@ -96,7 +96,7 @@ def lambda_handler(event, context):
         return {
             "statusCode": 500,
             "headers": {
-                "Access-Control-Allow-Origin": "https://https://rythwik-open.github.io",
+                "Access-Control-Allow-Origin": "https://rythwik-open.github.io",
                 "Access-Control-Allow-Headers": "Content-Type",
                 "Access-Control-Allow-Methods": "POST"
             },
