@@ -1,228 +1,213 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Newsletter Block</title>
-    <style>
-        .newsletter-block {
-            width: 100%; /* Full width to match content */
-            max-width: none; /* Remove max-width constraint */
-            background: #FFF7ED;
-            border-left: 4px solid #F97316;
-            padding: 1.5rem;
-            margin: 1.5rem 0;
-            border-radius: 0; /* Removed corner radius */
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-            text-align: left;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Newsletter Block</title>
+  <style>
+    .newsletter-block {
+      width: 100%;
+      background: #ffffff;
+      border-left: 4px solid #ef4123;
+      padding: 1.5rem;
+      margin: 1.5rem 0;
+      border-radius: 0;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+      text-align: left;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
 
-        .newsletter-content {
-            display: flex;
-            gap: 1rem;
-            margin-bottom: 1rem;
-            align-items: flex-start;
-        }
+    .newsletter-content {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 1rem;
+      align-items: flex-start;
+    }
 
-        .newsletter-icon {
-            color: #F97316;
-            background-color: rgba(249, 115, 22, 0.1);
-            padding: 0.5rem;
-            border-radius: 0; /* Removed corner radius */
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
+    .newsletter-icon {
+      color: #ef4123;
+      background-color: rgba(239, 65, 35, 0.1);
+      padding: 0.5rem;
+      border-radius: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
 
-        .newsletter-text h3 {
-            font-size: 1.25rem;
-            font-weight: 600;
-            margin: 0 0 0.5rem 0;
-            color: #1F2937;
-        }
+    .newsletter-text h3 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin: 0 0 0.5rem 0;
+      color: #000000;
+    }
 
-        .newsletter-text p {
-            font-size: 0.875rem;
-            margin: 0;
-            color: #4B5563;
-            line-height: 1.4;
-        }
+    .newsletter-text p {
+      font-size: 0.875rem;
+      margin: 0;
+      color: #000000;
+      line-height: 1.4;
+    }
 
-        .newsletter-form {
-            margin-top: 1rem;
-        }
+    .newsletter-form {
+      margin-top: 1rem;
+    }
 
-        .input-group {
-            display: flex;
-            gap: 0.5rem;
-            flex-wrap: wrap;
-        }
+    .input-wrapper {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      max-width: 400px;
+    }
 
-        .newsletter-input {
-            flex: 1;
-            min-width: 200px;
-            padding: 0.5rem 0.75rem;
-            border: 1px solid #E5E7EB;
-            border-radius: 0; /* Removed corner radius */
-            font-size: 0.875rem;
-        }
+    .newsletter-input {
+      padding: 0.5rem 0.75rem;
+      border: 1px solid #E5E7EB;
+      border-radius: 0;
+      font-size: 0.875rem;
+      color: #000;
+    }
 
-        .newsletter-input:focus {
-            border-color: #F97316;
-            outline: none;
-            box-shadow: 0 0 0 2px rgba(249, 115, 22, 0.2);
-        }
+    .newsletter-input:focus {
+      border-color: #ef4123;
+      outline: none;
+      box-shadow: 0 0 0 2px rgba(239, 65, 35, 0.2);
+    }
 
-        .newsletter-button {
-            background-color: #F97316;
-            color: white;
-            font-weight: 500;
-            padding: 0.5rem 1rem;
-            border: none;
-            border-radius: 0; /* Removed corner radius */
-            cursor: pointer;
-            font-size: 0.875rem;
-        }
+    .newsletter-button {
+      background-color: #ef4123;
+      color: white;
+      font-weight: 500;
+      padding: 0.5rem 1rem;
+      border: none;
+      border-radius: 0;
+      cursor: pointer;
+      font-size: 0.875rem;
+      text-align: left;
+      width: fit-content;
+    }
 
-        .newsletter-button:hover {
-            background-color: #EA580C;
-        }
+    .newsletter-button:hover {
+      background-color: #d7351e;
+    }
 
-        .newsletter-button:focus {
-            outline: none;
-            box-shadow: 0 0 0 2px rgba(249, 115, 22, 0.4);
-        }
-        
-        .newsletter-message {
-            margin-top: 0.5rem;
-            font-size: 0.875rem;
-        }
-        
-        .newsletter-message.success {
-            color: #059669;
-        }
-        
-        .newsletter-message.error {
-            color: #DC2626;
-        }
+    .newsletter-button:focus {
+      outline: none;
+      box-shadow: 0 0 0 2px rgba(239, 65, 35, 0.4);
+    }
 
-        /* Responsive adjustments */
-        @media (max-width: 480px) {
-            .newsletter-block {
-                padding: 1rem;
-            }
-            
-            .input-group {
-                flex-direction: column;
-            }
-            
-            .newsletter-button {
-                width: 100%;
-            }
-        }
-    </style>
+    .newsletter-message {
+      margin-top: 0.5rem;
+      font-size: 0.875rem;
+    }
+
+    .newsletter-message.success {
+      color: #059669;
+    }
+
+    .newsletter-message.error {
+      color: #DC2626;
+    }
+
+    @media (max-width: 480px) {
+      .newsletter-block {
+        padding: 1rem;
+      }
+
+      .input-wrapper {
+        max-width: 100%;
+      }
+    }
+  </style>
 </head>
 <body>
-    <div class="newsletter-block">
-        <div class="newsletter-content">
-            <div class="newsletter-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <rect width="20" height="16" x="2" y="4" rx="2"></rect>
-                    <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
-                </svg>
-            </div>
-            <div class="newsletter-text">
-                <h3>Stay in the Loop</h3>
-                <p>Subscribe to our newsletter for the latest updates and exclusive content.</p>
-            </div>
-        </div>
-
-        <form id="newsletter-form" class="newsletter-form">
-            <div class="input-group">
-                <input type="email" id="newsletter-email" placeholder="Your email address" class="newsletter-input" required>
-                <button type="submit" id="newsletter-submit" class="newsletter-button">Subscribe</button>
-            </div>
-            <div id="newsletter-message" class="newsletter-message"></div>
-        </form>
+  <div class="newsletter-block">
+    <div class="newsletter-content">
+      <div class="newsletter-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect width="20" height="16" x="2" y="4" rx="2"></rect>
+          <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+        </svg>
+      </div>
+      <div class="newsletter-text">
+        <h3>Subscribe to our Newsletter</h3>
+        <p>Stay notified about the latest updates and exclusive content.</p>
+      </div>
     </div>
 
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            const form = document.getElementById("newsletter-form");
-            const emailInput = document.getElementById("newsletter-email");
-            const submitButton = document.getElementById("newsletter-submit");
-            const messageDiv = document.getElementById("newsletter-message");
-            
-            // API endpoint (replace with your Lambda function URL)
-            const API_ENDPOINT = "https://unttqs6138.execute-api.ap-south-1.amazonaws.com/api/subscribe";
-            
-            form.addEventListener("submit", function(e) {
-                e.preventDefault();
-                
-                // Reset message
-                messageDiv.textContent = "";
-                messageDiv.className = "newsletter-message";
-                
-                // Get email
-                const email = emailInput.value.trim();
-                
-                // Basic validation
-                if (!isValidEmail(email)) {
-                    showMessage("Please enter a valid email address.", "error");
-                    return;
-                }
-                
-                // Disable form during submission
-                submitButton.disabled = true;
-                submitButton.textContent = "Subscribing...";
-                
-                // Send subscription request
-                fetch(API_ENDPOINT, {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json",
-                    },
-                    body: JSON.stringify({ email: email })
-                })
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error("Network response was not ok");
-                    }
-                    return response.json();
-                })
-                .then(data => {
-                    // Success
-                    showMessage("You're now subscribed to our newsletter!", "success");
-                    emailInput.value = "";
-                    
-                    // Change button to show success
-                    submitButton.textContent = "✓ Subscribed";
-                    setTimeout(() => {
-                        submitButton.disabled = false;
-                        submitButton.textContent = "Subscribe";
-                    }, 3000);
-                })
-                .catch(error => {
-                    // Error
-                    showMessage("There was an error subscribing. Please try again.", "error");
-                    submitButton.disabled = false;
-                    submitButton.textContent = "Subscribe";
-                    console.error("Subscription error:", error);
-                });
-            });
-            
-            function isValidEmail(email) {
-                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-                return emailRegex.test(email);
+    <form id="newsletter-form" class="newsletter-form">
+      <div class="input-wrapper">
+        <input type="email" id="newsletter-email" placeholder="Your email address" class="newsletter-input" required>
+        <button type="submit" id="newsletter-submit" class="newsletter-button">Subscribe</button>
+      </div>
+      <div id="newsletter-message" class="newsletter-message"></div>
+    </form>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const form = document.getElementById("newsletter-form");
+      const emailInput = document.getElementById("newsletter-email");
+      const submitButton = document.getElementById("newsletter-submit");
+      const messageDiv = document.getElementById("newsletter-message");
+
+      const API_ENDPOINT = "https://unttqs6138.execute-api.ap-south-1.amazonaws.com/api/subscribe";
+
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        messageDiv.textContent = "";
+        messageDiv.className = "newsletter-message";
+
+        const email = emailInput.value.trim();
+
+        if (!isValidEmail(email)) {
+          showMessage("Please enter a valid email address.", "error");
+          return;
+        }
+
+        submitButton.disabled = true;
+        submitButton.textContent = "Subscribing...";
+
+        fetch(API_ENDPOINT, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ email: email }),
+        })
+          .then((response) => {
+            if (!response.ok) {
+              throw new Error("Network response was not ok");
             }
-            
-            function showMessage(text, type) {
-                messageDiv.textContent = text;
-                messageDiv.className = "newsletter-message " + type;
-            }
-        });
-    </script>
+            return response.json();
+          })
+          .then((data) => {
+            showMessage("You're now subscribed to our newsletter!", "success");
+            emailInput.value = "";
+            submitButton.textContent = "✓ Subscribed";
+            setTimeout(() => {
+              submitButton.disabled = false;
+              submitButton.textContent = "Subscribe";
+            }, 3000);
+          })
+          .catch((error) => {
+            showMessage("There was an error subscribing. Please try again.", "error");
+            submitButton.disabled = false;
+            submitButton.textContent = "Subscribe";
+            console.error("Subscription error:", error);
+          });
+      });
+
+      function isValidEmail(email) {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(email);
+      }
+
+      function showMessage(text, type) {
+        messageDiv.textContent = text;
+        messageDiv.className = "newsletter-message " + type;
+      }
+    });
+  </script>
 </body>
 </html>
